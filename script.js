@@ -1,7 +1,1 @@
-let data=JSON.parse(localStorage.qrdata||'[]');const tb=document.querySelector('#tbl tbody');
-function render(){tb.innerHTML='';let s=search.value.toLowerCase();data.filter(r=>r.value.toLowerCase().includes(s)).forEach((r,i)=>tb.innerHTML+=`<tr><td>${i+1}</td><td>${r.value}</td><td>${r.time}</td></tr>`);count.textContent=data.length;localStorage.qrdata=JSON.stringify(data);}
-search.oninput=render;render();
-function onScanSuccess(txt){if(data.some(x=>x.value===txt))return;data.push({value:txt,time:new Date().toLocaleString()});navigator.vibrate?.(100);render();}
-new Html5QrcodeScanner('reader',{fps:10,qrbox:250}).render(onScanSuccess);
-function downloadCSV(){let csv='No,Value,Time\n';data.forEach((r,i)=>csv+=`${i+1},"${r.value}","${r.time}"\n`);let b=new Blob([csv],{type:'text/csv'});let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='qr_scans.csv';a.click();}
-function clearAll(){if(confirm('Clear all?')){data=[];render();}}
+let d=[];function b(){let c=new(window.AudioContext||webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.08);o.stop(c.currentTime+.08)}function r(){tb.innerHTML='';d.forEach((x,i)=>tb.innerHTML+=`<tr><td>${i+1}</td><td>${x}</td></tr>`);count.textContent=d.length}new Html5QrcodeScanner('reader',{fps:15,qrbox:250}).render(t=>{if(d.includes(t))return;d.push(t);b();r()});function downloadCSV(){let s='Value\n'+d.join('\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([s]));a.download='scans.csv';a.click()}function clearAll(){d=[];r()}

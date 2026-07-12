@@ -1,13 +1,1 @@
-<!DOCTYPE html><html><head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="style.css">
-<script src="https://unpkg.com/html5-qrcode"></script>
-</head><body>
-<div class="wrap"><h2>QR Scanner</h2>
-<div id="reader"></div>
-<p>Total: <span id="count">0</span></p>
-<input id="search" placeholder="Search">
-<table id="tbl"><thead><tr><th>#</th><th>Value</th><th>Time</th></tr></thead><tbody></tbody></table>
-<button onclick="downloadCSV()">Export CSV</button>
-<button onclick="clearAll()">Clear</button>
-</div><script src="script.js"></script></body></html>
+<!doctype html><html><head><meta name='viewport' content='width=device-width,initial-scale=1'><link rel='stylesheet' href='style.css'><script src='https://unpkg.com/html5-qrcode'></script></head><body><div class='card'><h2>QR Auto Scanner</h2><div id='reader'></div><button onclick='downloadCSV()'>Export CSV</button><button onclick='clearAll()'>Clear</button><p>Total <span id='count'></span></p><table><tbody id='tb'></tbody></table><script src='script.js'></script></body></html>
